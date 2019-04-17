@@ -1,0 +1,243 @@
+{
+  "Frames": [
+    {
+      "Turn": 0,
+      "Food": [
+        {
+          "X": 1,
+          "Y": 8
+        },
+        {
+          "X": 13,
+          "Y": 4
+        },
+        {
+          "X": 12,
+          "Y": 11
+        },
+        {
+          "X": 4,
+          "Y": 8
+        },
+        {
+          "X": 12,
+          "Y": 4
+        },
+        {
+          "X": 11,
+          "Y": 12
+        },
+        {
+          "X": 9,
+          "Y": 9
+        },
+        {
+          "X": 2,
+          "Y": 6
+        },
+        {
+          "X": 9,
+          "Y": 12
+        },
+        {
+          "X": 4,
+          "Y": 6
+        }
+      ],
+      "Snakes": [
+        {
+          "ID": "0c9730d6-c5dd-43b8-805b-9493b7bee81f",
+          "Name": "random",
+          "URL": "",
+          "Body": [
+            {
+              "X": 10,
+              "Y": 3
+            },
+            {
+              "X": 10,
+              "Y": 3
+            },
+            {
+              "X": 10,
+              "Y": 3
+            }
+          ],
+          "Health": 100,
+          "Death": null,
+          "Color": "#0000ff",
+          "HeadType": "smile",
+          "TailType": "regular"
+        },
+        {
+          "ID": "29322c36-f8c3-463c-acff-cd2062ea110a",
+          "Name": "hungry-food",
+          "URL": "",
+          "Body": [
+            {
+              "X": 9,
+              "Y": 2
+            },
+            {
+              "X": 9,
+              "Y": 2
+            },
+            {
+              "X": 9,
+              "Y": 2
+            }
+          ],
+          "Health": 100,
+          "Death": null,
+          "Color": "#c0c0c0",
+          "HeadType": "dead",
+          "TailType": "curled"
+        },
+        {
+          "ID": "2c3ff2c8-7200-4204-b912-e8fc30c04596",
+          "Name": "eager-food",
+          "URL": "",
+          "Body": [
+            {
+              "X": 7,
+              "Y": 6
+            },
+            {
+              "X": 7,
+              "Y": 6
+            },
+            {
+              "X": 7,
+              "Y": 6
+            }
+          ],
+          "Health": 100,
+          "Death": null,
+          "Color": "#ffafaf",
+          "HeadType": "silly",
+          "TailType": "freckled"
+        }
+      ]
+    },
+    {
+      "Turn": 1,
+      "Food": [
+        {
+          "X": 1,
+          "Y": 8
+        },
+        {
+          "X": 13,
+          "Y": 4
+        },
+        {
+          "X": 12,
+          "Y": 11
+        },
+        {
+          "X": 4,
+          "Y": 8
+        },
+        {
+          "X": 12,
+          "Y": 4
+        },
+        {
+          "X": 11,
+          "Y": 12
+        },
+        {
+          "X": 9,
+          "Y": 9
+        },
+        {
+          "X": 2,
+          "Y": 6
+        },
+        {
+          "X": 9,
+          "Y": 12
+        },
+        {
+          "X": 4,
+          "Y": 6
+        }
+      ],
+      "Snakes": [
+        {
+          "ID": "0c9730d6-c5dd-43b8-805b-9493b7bee81f",
+          "Name": "random",
+          "URL": "",
+          "Body": [
+            {
+              "X": 10,
+              "Y": 4
+            },
+            {
+              "X": 10,
+              "Y": 3
+            },
+            {
+              "X": 10,
+              "Y": 3
+            }
+          ],
+          "Health": 99,
+          "Death": null,
+          "Color": "#0000ff",
+          "HeadType": "smile",
+          "TailType": "regular"
+        },
+        {
+          "ID": "29322c36-f8c3-463c-acff-cd2062ea110a",
+          "Name": "hungry-food",
+          "URL": "",
+          "Body": [
+            {
+              "X": 9,
+              "Y": 1
+            },
+            {
+              "X": 9,
+              "Y": 2
+            },
+            {
+              "X": 9,
+              "Y": 2
+            }
+          ],
+          "Health": 99,
+          "Death": null,
+          "Color": "#c0c0c0",
+          "HeadType": "dead",
+          "TailType": "curled"
+        },
+        {
+          "ID": "2c3ff2c8-7200-4204-b912-e8fc30c04596",
+          "Name": "eager-food",
+          "URL": "",
+          "Body": [
+            {
+              "X": 6,
+              "Y": 6
+            },
+            {
+              "X": 7,
+              "Y": 6
+            },
+            {
+              "X": 7,
+              "Y": 6
+            }
+          ],
+          "Health": 99,
+          "Death": null,
+          "Color": "#ffafaf",
+          "HeadType": "silly",
+          "TailType": "freckled"
+        }
+      ]
+    }
+  ],
+  "Count": 2
+}
