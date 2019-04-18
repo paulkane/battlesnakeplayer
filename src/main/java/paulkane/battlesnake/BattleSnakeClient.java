@@ -14,7 +14,7 @@ import paulkane.battlesnake.model.gamestatus.GameStatus;
 import java.io.IOException;
 
 /**
- * Need to get the String as the response type is text/plain not application/json *sigh*
+ * Need to get response as String; the response type is text/plain not application/json *sigh*
  */
 @Service
 public class BattleSnakeClient {
@@ -22,7 +22,7 @@ public class BattleSnakeClient {
     private final RestTemplate restTemplate;
 
     public BattleSnakeClient(
-        @Value("${battlesnake.root.url}") String rootUri,
+        @Value("${battlesnake.engine.url}") String rootUri,
         RestTemplateBuilder restTemplateBuilder) {
         this.restTemplate = restTemplateBuilder
             .rootUri(rootUri)

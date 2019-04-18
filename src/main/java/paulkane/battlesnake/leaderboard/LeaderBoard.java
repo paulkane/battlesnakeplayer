@@ -1,17 +1,27 @@
 package paulkane.battlesnake.leaderboard;
 
+import org.springframework.beans.factory.annotation.Value;
 import paulkane.battlesnake.model.Snake;
 import paulkane.battlesnake.model.gamestatus.GameStatus;
 
 import java.util.HashMap;
-import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.LinkedBlockingQueue;
 
+/*
+ place results in a queue. Was worried about race conditions updating the `Result` in the map.
+ */
 public class LeaderBoard {
 
     private static final HashMap<String, Result> RESULTS = new HashMap<>();
-    private static ConcurrentLinkedQueue<GameStatus> queue = new ConcurrentLinkedQueue<>();
+    private static final LinkedBlockingQueue<GameStatus> queue = new LinkedBlockingQueue<>();
+    private static int printResultsEvery = 10;
+    private static int maxSnakeNameSize = 0;
+
+    public LeaderBoard(@Value("${battlesnake.print.results.every:10}") int printResultsEvery) {
+        LeaderBoard.printResultsEvery = printResultsEvery;
+    }
 
     static {
         ExecutorService executorService = Executors.newSingleThreadExecutor();
@@ -24,21 +34,33 @@ public class LeaderBoard {
     }
 
     public static void printResults() {
+        while (queue.size() > 0) {
+            try {
+                Thread.sleep(10);
+            } catch (InterruptedException ignore) {
+            }
+        }
+        printResultsToScreen();
+    }
+
+    private static void printResultsToScreen() {
         System.out.println();
         System.out.println("Results");
         for (Result result : RESULTS.values()) {
-            System.out.printf("%20s [%s/%s]%n", result.getSnakeName(), result.getGameWon(), result.getGamePlayed());
+            System.out.printf("%" + maxSnakeNameSize + "s [%3s/%3s]%n", result.getSnakeName(), result.getGameWon(),
+                result.getGamePlayed());
         }
     }
 
     static class Adder implements Runnable {
+        private int count;
 
         @Override
         public void run() {
             GameStatus gameStatus;
-            while (!Thread.interrupted()) {
-                gameStatus = queue.poll();
-                if (gameStatus != null) {
+            try {
+                while (!Thread.interrupted()) {
+                    gameStatus = queue.take();
                     for (Snake snake : gameStatus.getLastFrame().getSnakes()) {
                         Result result =
                             RESULTS.getOrDefault(snake.getName(), Result.builder().snakeName(snake.getName()).build());
@@ -46,15 +68,15 @@ public class LeaderBoard {
                             result.wonGame();
                         }
                         result.played();
+                        maxSnakeNameSize = Math.max(maxSnakeNameSize, snake.getName().length());
                         RESULTS.put(snake.getName(), result);
                     }
-                } else {
-                    try {
-                        Thread.sleep(100);
-                    } catch (InterruptedException ignore) {
-
+                    if (++count % printResultsEvery == 0) {
+                        printResultsToScreen();
                     }
                 }
+            } catch (InterruptedException ignore) {
+
             }
         }
     }

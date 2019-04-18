@@ -1,20 +1,22 @@
 package paulkane.battlesnake;
 
+import paulkane.battlesnake.file.BoardWriter;
 import paulkane.battlesnake.leaderboard.LeaderBoard;
 import paulkane.battlesnake.model.Board;
 import paulkane.battlesnake.model.GameId;
-import paulkane.battlesnake.model.frame.Frames;
 import paulkane.battlesnake.model.gamestatus.GameStatus;
 
 import java.util.concurrent.Callable;
 
 public class BattleSnakePlayer implements Callable {
     private final BattleSnakeClient battleSnakeClient;
+    private final BoardWriter boardWriter;
     private final Board board;
     private final int gamesToPlay;
 
-    public BattleSnakePlayer(BattleSnakeClient battleSnakeClient, Board board, int gamesToPlay) {
+    public BattleSnakePlayer(BattleSnakeClient battleSnakeClient, BoardWriter boardWriter, Board board, int gamesToPlay) {
         this.battleSnakeClient = battleSnakeClient;
+        this.boardWriter = boardWriter;
         this.board = board;
         this.gamesToPlay = gamesToPlay;
     }
@@ -28,10 +30,11 @@ public class BattleSnakePlayer implements Callable {
 
                 GameStatus gameStatus;
                 do {
-                    Frames frames = battleSnakeClient.frames(gameId);
+                    battleSnakeClient.frames(gameId);
                     gameStatus = battleSnakeClient.gameStatus(gameId);
                 } while (gameStatus.getGame().getStatus().equals("running"));
 
+                boardWriter.write(gameId);
                 LeaderBoard.addResult(gameStatus);
             }
         } catch (Exception ignore) {

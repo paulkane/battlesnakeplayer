@@ -1,6 +1,5 @@
 package paulkane.battlesnake.model.frame;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import paulkane.battlesnake.model.Snake;

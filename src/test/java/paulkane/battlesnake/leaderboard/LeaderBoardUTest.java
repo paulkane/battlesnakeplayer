@@ -26,6 +26,13 @@ public class LeaderBoardUTest {
         LeaderBoard.printResults();
     }
 
+    @Test
+    public void testPadding() {
+        String value = "value";
+        System.out.printf("[%20s]", value);
+        System.out.printf("[%-20s]", value);
+    }
+
     private Snake snake(String name, String deathReason) {
         Snake snake = new Snake();
         snake.setName(name);

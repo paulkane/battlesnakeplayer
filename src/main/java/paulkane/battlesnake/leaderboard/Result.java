@@ -11,7 +11,7 @@ public class Result {
     private int gameWon;
 
     public void wonGame() {
-        gameWon ++;
+        gameWon++;
     }
 
     public void played() {
